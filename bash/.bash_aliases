@@ -4,6 +4,15 @@ aliens() {
 	echo "Yuuuup yup yup yup yup yup yup"
 }
 
+location() {
+	echo "The file to edit is /u/.bash_aliases"
+}
+
+ssh_load(){
+eval "$(ssh-agent -s)"
+ssh-add /c/Users/Seth/.ssh/id_rsa
+}
+
 assume() {
      eval $(echo $2 | ~/go/bin/assume-role $1)
 }
@@ -58,11 +67,8 @@ purge() {
 	docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes
 }
 
-to_gif() {
-	mkdir frames
-	ffmpeg -i $1 -vf scale=$2:-1:flags=lanczos,fps=10 frames/ffout%03d.png
-	convert -loop 0 frames/ffout*.png output.gif
-	rm -rf frames	
+azlogin() {
+	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
-
-alias refresh="source ~/.bash_aliases"
+ssh_load
+alias refresh="source ~/.bash_profile"
