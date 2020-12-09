@@ -74,5 +74,5 @@ purge() {
 azlogin() {
 	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
-PATH=$PATH:/home/vagrant/.local/bin"
+PATH="$PATH:/home/vagrant/.local/bin"
 alias refresh="source ~/.bash_profile"
