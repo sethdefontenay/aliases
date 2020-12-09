@@ -4,6 +4,10 @@ aliens() {
 	echo "Yuuuup yup yup yup yup yup yup"
 }
 
+install_venv(){
+/home/vagrant/.local/bin/virtualenv -p /usr/bin/python3.8 venv --always-copy
+}
+
 location() {
 	echo "The file to edit is /u/.bash_aliases"
 }
@@ -70,5 +74,5 @@ purge() {
 azlogin() {
 	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
-ssh_load
+PATH=$PATH:/home/vagrant/.local/bin"
 alias refresh="source ~/.bash_profile"
