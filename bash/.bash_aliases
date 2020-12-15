@@ -4,6 +4,10 @@ aliens() {
 	echo "Yuuuup yup yup yup yup yup yup"
 }
 
+act(){
+	source venv/bin/activate
+}
+
 install_venv(){
 /home/vagrant/.local/bin/virtualenv -p /usr/bin/python3.8 venv --always-copy
 }
