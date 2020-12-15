@@ -4,6 +4,10 @@ aliens() {
 	echo "Yuuuup yup yup yup yup yup yup"
 }
 
+install_venv(){
+/home/vagrant/.local/bin/virtualenv -p /usr/bin/python3.8 venv --always-copy
+}
+
 location() {
 	echo "The file to edit is /u/.bash_aliases"
 }
@@ -40,7 +44,7 @@ d_uploadp() {
 	docker push inttester.azurecr.io/$1
 }
 
-revoke_aws() {
+revoke_aws() { 
        unset AWS_SESSION_TOKEN
        unset AWS_SECRET_ACCESS_KEY
        unset AWS_ACCESS_KEY_ID
@@ -76,7 +80,5 @@ purge() {
 azlogin() {
 	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
-
-ssh_load
-
+PATH="$PATH:/home/vagrant/.local/bin"
 alias refresh="source ~/.bash_profile"
