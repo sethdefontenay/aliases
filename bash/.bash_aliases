@@ -16,25 +16,35 @@ ssh-add /c/Users/Seth/.ssh/id_rsa
 assume() {
      eval $(echo $2 | ~/go/bin/assume-role $1)
 }
+d_stop(){
+	docker stop $(docker ps -aq)
+}
+
+d_rebuild() {
+	d_stop
+	docker build -t $1 .
+	docker run --shm-size 1g -p 8000:8000 $1
+}
+d_login() {
+	docker login conxdevcontainerregistry.azurecr.io -u conxDevContainerRegistry -p $1
+}
+d_upload() {
+	docker build -t conxdevcontainerregistry.azurecr.io/$1 .
+	docker push conxdevcontainerregistry.azurecr.io/$1
+}
+d_loginp() {
+	docker login inttester.azurecr.io -u inttester -p $1
+}
+d_uploadp() {
+	docker build -t inttester.azurecr.io/$1 .
+	docker push inttester.azurecr.io/$1
+}
 
 revoke_aws() {
        unset AWS_SESSION_TOKEN
        unset AWS_SECRET_ACCESS_KEY
        unset AWS_ACCESS_KEY_ID
        unset AWS_SECURITY_TOKEN
-}
-
-alias nr_up="NR_LICENSE_KEY='cc841a139a759c77a0b845c39122badc81969b1e' docker-compose up -d"
-
-common() {
-	cd ~/Development/xero_sre_common/
-	act
-	inv build
-	inv docker.build-common
-	deactivate
-	cd ~/Development/platform/
-	act
-	pip3 install ../xero_sre_common
 }
 
 amend() {
@@ -55,10 +65,6 @@ git_update() {
 	git pull origin $1
 }
 
-act() {
-	source venv/bin/activate
-}
-
 space() {
 	sudo du -chsx * | sort -h
 }
@@ -70,5 +76,7 @@ purge() {
 azlogin() {
 	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
+
 ssh_load
+
 alias refresh="source ~/.bash_profile"
