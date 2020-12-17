@@ -84,5 +84,9 @@ purge() {
 azlogin() {
 	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
 }
+#Virtualenvwrapper settings:
+export WORKON_HOME=$HOME/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+. /usr/local/bin/virtualenvwrapper.sh
 PATH="$PATH:/home/vagrant/.local/bin"
 alias refresh="source ~/.bash_profile"
