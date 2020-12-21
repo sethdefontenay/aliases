@@ -82,7 +82,7 @@ purge() {
 }
 
 azlogin() {
-	az login -u seth@con-x.com -p 9fSpuU9JuI8aTE1uVimy
+	az login -u seth@con-x.com -p
 }
 #Virtualenvwrapper settings:
 export WORKON_HOME=$HOME/.virtualenvs
