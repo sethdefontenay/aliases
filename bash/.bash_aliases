@@ -87,6 +87,6 @@ azlogin() {
 #Virtualenvwrapper settings:
 export WORKON_HOME=$HOME/.virtualenvs
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-. ~/.local/bin/virtualenvwrapper.sh
+. /usr/local/bin/virtualenvwrapper.sh
 PATH="$PATH:/home/vagrant/.local/bin"
 alias refresh="source ~/.bash_profile"
